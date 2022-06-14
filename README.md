@@ -2,9 +2,9 @@ Todo
 [ ] - JWT
 [ ] - Prisma
 [x] - Redux
-[ ] - Next JS
+[x] - Next JS
 [x] - Typescript
 [x] - Axios
-[] - Cross ENV
+[ ] - Cross ENV
 [ ] - Eslint
 [ ] - UI Design - Tailwind
