@@ -1,7 +1,8 @@
 import type { NextPage } from "next";
+import styles from "../styles/Home.module.css";
+
 import { useAppDispatch, useAppSelector } from "../lib/custom-hooks";
 import { incremented, amountAdded } from "../lib/features/counter-slice";
-import Link from "next/link";
 const Home: NextPage = () => {
 	const count = useAppSelector((state) => state.counter.value);
 	const dipatch = useAppDispatch();
@@ -10,9 +11,9 @@ const Home: NextPage = () => {
 		dipatch(amountAdded(3));
 	};
 	return (
-		<div>
-			<Link href="Client/Frontend/Core/Login">Admin</Link>
-			<Link href="Client/Frontend/Core/Login">Admin</Link>
+		<div className={styles.container}>
+			{count}
+			<button onClick={handleIncrement}></button>
 		</div>
 	);
 };
