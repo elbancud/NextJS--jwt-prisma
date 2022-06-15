@@ -3,14 +3,21 @@
 ## Technology integrated
 
 ```
-[ ] - JWT
-[ ] - Prisma
+FRONTEND
 [x] - Redux
 [x] - Next JS
 [x] - Typescript
+
+STYLING
+[x] - UI Design - Tailwind
+[x] - Admin Dashboard - ANTDesign
+
+BACKEND
+[ ] -
+AUTH
+[ ] - JWT
 [x] - Axios
 [ ] - Cross ENV
-[ ] - Eslint
-[ ] - UI Design - Tailwind
-[ ] - Admin Dashboard - ANTDesign
+[x] - Eslint
+[ ] - Prisma
 ```
