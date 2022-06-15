@@ -6,35 +6,44 @@ import {
 	UserOutlined,
 } from "@ant-design/icons";
 import { Breadcrumb, Layout, Menu } from "antd";
-import React from "react";
+import React, { useState } from "react";
+import BlogResource from "../../../../components/Client/Frontend/Dashboard/BlogsResource";
+import { AppProps } from "next/app";
 const { Header, Content, Sider } = Layout;
 // const topNavItems = ["1", "2", "3"].map((key) => ({
 // 	key,
 // 	label: `nav `,
 // }));
+
 const sideItems = [
 	{
 		icon: DatabaseOutlined,
 		title: "Blogs",
+		component: BlogResource,
 	},
 	{
 		icon: UserOutlined,
 		title: "Accounts",
+		component: "AccountsController",
 	},
 ];
+
+const setComponent = (Component: string | (() => JSX.Element)) => {};
+
 const sideNavItems = sideItems.map((item, index) => {
 	const key = String(index + 1);
 	return {
 		key: `sub${key}`,
 		icon: React.createElement(item.icon),
 		label: item.title,
-		children: new Array(1).fill(null).map((_, j) => {
-			const subKey = index * 4 + j + 1;
-			return {
-				key: subKey,
-				label: `option${subKey}`,
-			};
-		}),
+		onClick: () => setComponent(item.component),
+		// children: new Array(4).fill(null).map((_, j) => {
+		// 	const subKey = index * 4 + j + 1;
+		// 	return {
+		// 		key: subKey,
+		// 		label: `option${subKey}`,
+		// 	};
+		// }),
 	};
 });
 
@@ -54,7 +63,7 @@ const Index = () => (
 				<Menu
 					mode="inline"
 					defaultSelectedKeys={["1"]}
-					defaultOpenKeys={["sub1"]}
+					// defaultOpenKeys={["sub1"]}
 					style={{
 						height: "100%",
 						borderRight: 0,
@@ -75,6 +84,7 @@ const Index = () => (
 					<Breadcrumb.Item>Home</Breadcrumb.Item>
 					<Breadcrumb.Item>List</Breadcrumb.Item>
 					<Breadcrumb.Item>App</Breadcrumb.Item>
+					<Breadcrumb.Item>App</Breadcrumb.Item>
 				</Breadcrumb>
 				<Content
 					className="site-layout-background"
@@ -83,9 +93,7 @@ const Index = () => (
 						margin: 0,
 						minHeight: "100vh",
 					}}
-				>
-					Content
-				</Content>
+				></Content>
 			</Layout>
 		</Layout>
 	</Layout>
