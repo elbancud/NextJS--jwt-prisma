@@ -1,4 +1,8 @@
-Todo
+## About the Project
+
+## Technology integrated
+
+```
 [ ] - JWT
 [ ] - Prisma
 [x] - Redux
@@ -8,3 +12,5 @@ Todo
 [ ] - Cross ENV
 [ ] - Eslint
 [ ] - UI Design - Tailwind
+[ ] - Admin Dashboard - ANTDesign
+```
