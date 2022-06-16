@@ -30,7 +30,9 @@ const dashboardComponents = [
 ];
 
 function DashboardContainer() {
-	const [component, setComponent] = useState<NextComponentType | any>();
+	const [component, setComponent] = useState<NextComponentType | any>(
+		BlogResource
+	);
 
 	const menuItems = menuItemsArray.map((menuItem, index) => {
 		return {
@@ -53,12 +55,12 @@ function DashboardContainer() {
 				<Menu
 					theme="dark"
 					mode="horizontal"
-					defaultSelectedKeys={["2"]}
+					defaultSelectedKeys={["1"]}
 					items={menuItems}
 				/>
 			</Header>
 			<Content
-				className="site-layout-background"
+				className="bg-slate-100"
 				style={{
 					padding: "20px",
 					marginTop: 64,

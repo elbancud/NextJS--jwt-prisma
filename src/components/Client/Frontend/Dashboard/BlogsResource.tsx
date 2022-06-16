@@ -1,8 +1,9 @@
-import { Button, Form, FormInstance, Input, InputNumber } from "antd";
-const layout = {
+import { Button, Divider, Form, FormProps, Input } from "antd";
+const layout: FormProps<any> = {
 	labelCol: {
 		span: 4,
 	},
+	labelAlign: "left",
 	wrapperCol: {},
 };
 /* eslint-disable no-template-curly-in-string */
@@ -25,20 +26,30 @@ const App = () => {
 	};
 	const formRule = [{ required: true }];
 	return (
-		<div className=" h-fit">
+		<div className="bg-gray-50 p-6 rounded">
 			<div>
-				<h1 className="text-xl font-semibold">Blog</h1>
+				<h1 className="text-xl font-semibold ">
+					AGOI: <span className="text-teal-700">CReate Update Delete</span>
+				</h1>
+				<Divider />
 			</div>
 			<Form
+				className="text-left"
 				{...layout}
 				name="nest-messages"
 				onFinish={onFinish}
 				validateMessages={validateMessages}
 			>
-				<Form.Item name={["user", "name"]} label="Title" rules={formRule}>
+				<Form.Item
+					className="font-bold"
+					name={["user", "name"]}
+					label="Title"
+					rules={formRule}
+				>
 					<Input />
 				</Form.Item>
 				<Form.Item
+					className="font-bold"
 					name={["user", "introduction"]}
 					label="Description"
 					rules={formRule}
