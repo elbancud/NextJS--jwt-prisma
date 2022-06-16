@@ -16,7 +16,7 @@ export default [
 	},
 	{
 		requiredPermission: "",
-		name: "Home",
-		link: "/api/hello",
+		name: "Admin Login",
+		link: "/admin/login",
 	},
 ];

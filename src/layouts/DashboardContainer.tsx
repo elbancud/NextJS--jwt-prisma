@@ -27,12 +27,10 @@ const dashboardComponents = [
 	{ path: "/blogs-resource", component: BlogResource },
 	{ path: "/accounts-resource", component: BlogResource },
 ];
-interface ComponentType {
-	component: NextComponentType<NextPageContext, {}, {}>;
-}
+
 function DashboardContainer() {
 	const [sideItemComponent, setSideItemComponent] = useState<
-		ComponentType | any
+		NextComponentType | any
 	>();
 
 	const sideNavItems = sideItems.map((item, index) => {
