@@ -8,10 +8,6 @@ import BlogResource from "../components/Client/Frontend/Dashboard/BlogsResource"
 import AccountsResources from "../components/Client/Frontend/Dashboard/AccountsResource";
 import { NextComponentType, NextPageContext } from "next";
 
-// TODO: Dynamically pass component on click of side nav item
-// TODO: Pass the component to the content area
-//
-
 const { Header, Content, Sider } = Layout;
 const sideItems = [
 	{
@@ -34,7 +30,7 @@ const dashboardComponents = [
 interface ComponentType {
 	component: NextComponentType<NextPageContext, {}, {}>;
 }
-function DefaultLayout() {
+function DashboardContainer() {
 	const [sideItemComponent, setSideItemComponent] = useState<
 		ComponentType | any
 	>();
@@ -111,4 +107,4 @@ function DefaultLayout() {
 	);
 }
 
-export default DefaultLayout;
+export default DashboardContainer;
