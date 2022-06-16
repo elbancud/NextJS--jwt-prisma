@@ -1,9 +1,15 @@
 import type { NextPage } from "next";
+import { useRouter } from "next/router";
 import { useAppDispatch, useAppSelector } from "../lib/custom-hooks";
 import { incremented, amountAdded } from "../lib/features/counter-slice";
 import Link from "next/link";
+import paths from "../lib/paths";
 
 const Home: NextPage = () => {
+	const router = useRouter();
+	const handleRouterClick = () => {
+		// router.push();
+	};
 	// const count = useAppSelector((state) => state.counter.value);
 	// const dipatch = useAppDispatch();
 
@@ -12,8 +18,13 @@ const Home: NextPage = () => {
 	// };
 	return (
 		<div>
-			<Link href="./Client/Frontend/Core/Login">Admin</Link>
-			<Link href="./Client/Frontend/Dashboard/Index">Dashboard</Link>
+			{paths.map((path) => {
+				return (
+					<Link href={path.link} key={path.link}>
+						<a>{path.name}</a>
+					</Link>
+				);
+			})}
 		</div>
 	);
 };
