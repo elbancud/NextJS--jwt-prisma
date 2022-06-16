@@ -1,15 +1,16 @@
 import React, { useState } from "react";
-import Link from "next/link";
 import "antd/dist/antd.css";
-import { DatabaseOutlined, UserOutlined } from "@ant-design/icons";
-import { Breadcrumb, Layout, Menu } from "antd";
 
 import BlogResource from "../components/Client/Frontend/Dashboard/BlogsResource";
 import AccountsResources from "../components/Client/Frontend/Dashboard/AccountsResource";
 import { NextComponentType, NextPageContext } from "next";
 
-const { Header, Content, Sider } = Layout;
-const sideItems = [
+import { UserOutlined, DatabaseOutlined } from "@ant-design/icons";
+import { Layout, Menu, Breadcrumb } from "antd";
+
+const { Header, Content, Footer, Sider } = Layout;
+
+const menuItemsArray = [
 	{
 		icon: DatabaseOutlined,
 		title: "Blogs",
@@ -29,78 +30,59 @@ const dashboardComponents = [
 ];
 
 function DashboardContainer() {
-	const [sideItemComponent, setSideItemComponent] = useState<
-		NextComponentType | any
-	>();
+	const [component, setComponent] = useState<NextComponentType | any>();
 
-	const sideNavItems = sideItems.map((item, index) => {
-		const key = String(index + 1);
+	const menuItems = menuItemsArray.map((menuItem, index) => {
 		return {
-			key: `sub${key}`,
-			icon: React.createElement(item.icon),
-			label: item.title,
-			onClick: () => setSideItemComponent(item.component),
-			// children: new Array(4).fill(null).map((_, j) => {
-			// 	const subKey = index * 4 + j + 1;
-			// 	return {
-			// 		key: subKey,
-			// 		label: `option${subKey}`,
-			// 	};
-			// }),
+			key: String(index + 1),
+			label: menuItem.title,
+			onClick: () => setComponent(menuItem.component),
 		};
 	});
 
 	return (
-		<Layout>
-			<Header className="header">
+		<Layout style={{ minHeight: "100vh" }}>
+			<Header
+				style={{
+					position: "fixed",
+					zIndex: 1,
+					width: "100%",
+				}}
+			>
 				<div className="logo" />
-				{/* <Menu
+				<Menu
 					theme="dark"
 					mode="horizontal"
-					defaultSelectedKeys={["1"]}
-					items={topNavItems}
-				/> */}
+					defaultSelectedKeys={["2"]}
+					items={menuItems}
+				/>
 			</Header>
-			<Layout>
-				<Sider width={200} className="site-layout-background">
-					<Menu
-						mode="inline"
-						defaultSelectedKeys={["1"]}
-						// defaultOpenKeys={["sub1"]}
-						style={{
-							height: "100%",
-							borderRight: 0,
-						}}
-						items={sideNavItems}
-					/>
-				</Sider>
-				<Layout
+			<Content
+				className="site-layout-background"
+				style={{
+					padding: "20px",
+					marginTop: 64,
+				}}
+			>
+				{/* <Breadcrumb
 					style={{
-						padding: "0 24px 24px",
+						margin: "16px 0",
 					}}
 				>
-					{/* <Breadcrumb
-						style={{
-							margin: "16px 0",
-						}}
-					>
-						<Breadcrumb.Item>Home</Breadcrumb.Item>
-						<Breadcrumb.Item>List</Breadcrumb.Item>
-						<Breadcrumb.Item>App</Breadcrumb.Item>
-						<Breadcrumb.Item>App</Breadcrumb.Item>
-					</Breadcrumb> */}
-					<Content
-						className="site-layout-background"
-						style={{
-							padding: 24,
-							margin: 0,
-							minHeight: "100vh",
-						}}
-					>
-						{sideItemComponent}
-					</Content>
-				</Layout>
-			</Layout>
+					<Breadcrumb.Item>Home</Breadcrumb.Item>
+					<Breadcrumb.Item>List</Breadcrumb.Item>
+					<Breadcrumb.Item>DashboardContainer</Breadcrumb.Item>
+				</Breadcrumb> */}
+
+				{component}
+			</Content>
+			<Footer
+				style={{
+					textAlign: "center",
+				}}
+			>
+				hehehe
+			</Footer>
 		</Layout>
 	);
 }
