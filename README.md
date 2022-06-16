@@ -1,5 +1,7 @@
 ## About the Project
 
+A blogging website built from the ground up. This will be a starting point for implementing fullstack tech using the said technologies below. or wtvr
+
 ## Technology integrated
 
 ```

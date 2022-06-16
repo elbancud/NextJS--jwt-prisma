@@ -39,8 +39,6 @@ function DefaultLayout() {
 		ComponentType | any
 	>();
 
-	const setComponent = (Component: string | (() => JSX.Element)) => {};
-
 	const sideNavItems = sideItems.map((item, index) => {
 		const key = String(index + 1);
 		return {
