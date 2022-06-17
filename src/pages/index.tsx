@@ -18,13 +18,13 @@ const Home: NextPage = () => {
 	// };
 	return (
 		<div>
-			{paths.map((path) => {
+			{/* {paths.map((path) => {
 				return (
-					<Link href={path.link} key={path.link} as={path.slug}>
+					<Link href={path.link} key={path.link}>
 						<a>{path.name}</a>
 					</Link>
 				);
-			})}
+			})} */}
 		</div>
 	);
 };

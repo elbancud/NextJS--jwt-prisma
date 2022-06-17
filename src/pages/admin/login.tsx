@@ -14,7 +14,7 @@ function login() {
 		<div className="min-h-full p-5 flex items-center justify-center h-screen">
 			<div className="w-full max-w-md">
 				<div className="text-center">
-					<h1 className="font-bold text-xl">Login, erp.</h1>
+					<h1 className="font-bold text-lg">Login, erp.</h1>
 				</div>
 				<Form
 					name="basic"
