@@ -13,7 +13,7 @@ const { Header, Content, Footer, Sider } = Layout;
 const menuItemsArray = [
 	{
 		icon: DatabaseOutlined,
-		title: "Blogs",
+		title: "Articles",
 		path: "/blogs-reources",
 		component: BlogResource,
 	},

@@ -1,4 +1,6 @@
 import { Button, Divider, Form, FormProps, Input } from "antd";
+import "antd/dist/antd.css";
+
 const layout: FormProps<any> = {
 	labelCol: {
 		span: 4,
@@ -42,7 +44,7 @@ const App = () => {
 			>
 				<Form.Item
 					className="font-bold"
-					name={["user", "name"]}
+					name={["article", "title"]}
 					label="Title"
 					rules={formRule}
 				>
@@ -50,7 +52,7 @@ const App = () => {
 				</Form.Item>
 				<Form.Item
 					className="font-bold"
-					name={["user", "introduction"]}
+					name={["article", "description"]}
 					label="Description"
 					rules={formRule}
 				>
