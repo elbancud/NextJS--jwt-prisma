@@ -20,7 +20,7 @@ const Home: NextPage = () => {
 		<div>
 			{paths.map((path) => {
 				return (
-					<Link href={path.link} key={path.link}>
+					<Link href={path.link} key={path.link} as={path.slug}>
 						<a>{path.name}</a>
 					</Link>
 				);
