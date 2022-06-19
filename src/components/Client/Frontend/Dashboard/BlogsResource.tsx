@@ -1,4 +1,5 @@
 import { Button, Divider, Form, FormProps, Input } from "antd";
+import BlogTable from "../Tables/BlogTable";
 
 const layout: FormProps<any> = {
 	labelCol: {
@@ -27,45 +28,53 @@ const App = () => {
 	};
 	const formRule = [{ required: true }];
 	return (
-		<div className="bg-gray-50 p-6 rounded ">
-			<div>
-				<h1 className="text-xl font-semibold ">
-					AGOI: <span className="text-teal-700">CReate Update Delete</span>
-				</h1>
-				<Divider />
+		<div className="space-y-5 ">
+			<div className="p-6 rounded bg-gray-50 ">
+
+				<div>
+					<h1 className="text-xl font-semibold ">
+						AGOI: <span className="text-teal-700">CReate Update Delete</span>
+					</h1>
+					<Divider />
+				</div>
+				<div className="max-w-3xl">
+					<Form
+						className="text-left"
+						{...layout}
+						name="nest-messages"
+						onFinish={onFinish}
+						validateMessages={validateMessages}
+					>
+						<Form.Item
+							className="font-bold"
+							name={["article", "title"]}
+							label="Title"
+							rules={formRule}
+						>
+							<Input />
+						</Form.Item>
+						<Form.Item
+							className="font-bold"
+							name={["article", "description"]}
+							label="Description"
+							rules={formRule}
+						>
+							<Input.TextArea />
+						</Form.Item>
+						<Form.Item wrapperCol={{ ...layout.wrapperCol }}>
+							<Button type="primary" htmlType="submit">
+								Submit
+							</Button>
+						</Form.Item>
+					</Form>
+				</div>
 			</div>
-			<div className="max-w-3xl">
-				<Form
-					className="text-left"
-					{...layout}
-					name="nest-messages"
-					onFinish={onFinish}
-					validateMessages={validateMessages}
-				>
-					<Form.Item
-						className="font-bold"
-						name={["article", "title"]}
-						label="Title"
-						rules={formRule}
-					>
-						<Input />
-					</Form.Item>
-					<Form.Item
-						className="font-bold"
-						name={["article", "description"]}
-						label="Description"
-						rules={formRule}
-					>
-						<Input.TextArea />
-					</Form.Item>
-					<Form.Item wrapperCol={{ ...layout.wrapperCol }}>
-						<Button type="primary" htmlType="submit">
-							Submit
-						</Button>
-					</Form.Item>
-				</Form>
+			<div className="p-6 my-5 rounded bg-gray-50">
+			<BlogTable />
+					
 			</div>
 		</div>
+
 	);
 };
 
