@@ -10,4 +10,8 @@ export default function handler(
 	response: NextApiResponse
 ) {
 	const { title, description } = request.body;
+	response.status(200).json({
+		title,
+		description,
+	});
 }
