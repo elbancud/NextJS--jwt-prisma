@@ -4,6 +4,9 @@ import { useAppDispatch, useAppSelector } from "../lib/custom-hooks";
 import { incremented, amountAdded } from "../lib/features/counter-slice";
 import Link from "next/link";
 import paths from "../lib/paths";
+import Navigation from "../layouts/Screens/Navigation";
+import MainSection from "../layouts/Screens/MainSection";
+import Footer from "../layouts/Screens/Footer";
 
 const Home: NextPage = () => {
 	const router = useRouter();
@@ -18,13 +21,9 @@ const Home: NextPage = () => {
 	// };
 	return (
 		<div>
-			{/* {paths.map((path) => {
-				return (
-					<Link href={path.link} key={path.link}>
-						<a>{path.name}</a>
-					</Link>
-				);
-			})} */}
+			<Navigation />
+			<MainSection />
+			<Footer />
 		</div>
 	);
 };

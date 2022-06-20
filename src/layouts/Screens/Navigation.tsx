@@ -5,7 +5,7 @@ export default function Navigation() {
 		<div>
 			<ul className="flex justify-between">
 				<li>Logo</li>
-				<div>
+				<div className="flex">
 					<li>Nav</li>
 					<li>Nav</li>
 				</div>
