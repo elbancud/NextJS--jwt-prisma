@@ -15,7 +15,7 @@ STYLING
 [x] - Admin Dashboard - ANTDesign
 
 BACKEND
-[ ] -
+[ ] - api integration
 AUTH
 [ ] - JWT
 [x] - Axios

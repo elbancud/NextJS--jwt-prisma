@@ -2,13 +2,13 @@ import { Button, Checkbox, Form, Input } from "antd";
 import "antd/dist/antd.css";
 
 function login() {
-	const onFinish = (values) => {
-		console.log("Success:", values);
-	};
+	// const onFinish = (values) => {
+	// 	console.log("Success:", values);
+	// };
 
-	const onFinishFailed = (errorInfo) => {
-		console.log("Failed:", errorInfo);
-	};
+	// const onFinishFailed = (errorInfo) => {
+	// 	console.log("Failed:", errorInfo);
+	// };
 
 	return (
 		<div className="min-h-full p-5 flex items-center justify-center h-screen">

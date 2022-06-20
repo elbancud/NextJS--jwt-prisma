@@ -1,4 +1,5 @@
 import { Button, Divider, Form, FormProps, Input } from "antd";
+import axiosClient from "../../../../lib/axios";
 import BlogTable from "../Tables/BlogTable";
 
 const layout: FormProps<any> = {
@@ -23,8 +24,16 @@ const validateMessages = {
 /* eslint-enable no-template-curly-in-string */
 
 const App = () => {
-	const onFinish = (values) => {
-		console.log(values);
+	const onFinish = async (values) => {
+		// console.log(values);
+		await axiosClient
+			.post("/api/auth/adminAuth", values)
+			.then((result) => {
+				console.log(result);
+			})
+			.catch((error) => {
+				console.error(error);
+			});
 	};
 	const formRule = [{ required: true }];
 	return (
@@ -46,7 +55,7 @@ const App = () => {
 					>
 						<Form.Item
 							className="font-bold"
-							name={["article", "title"]}
+							name={["title"]}
 							label="Title"
 							rules={formRule}
 						>
@@ -54,7 +63,7 @@ const App = () => {
 						</Form.Item>
 						<Form.Item
 							className="font-bold"
-							name={["article", "description"]}
+							name={["description"]}
 							label="Description"
 							rules={formRule}
 						>
