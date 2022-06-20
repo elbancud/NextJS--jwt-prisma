@@ -30,7 +30,6 @@ const App = () => {
 	return (
 		<div className="space-y-5 ">
 			<div className="p-6 rounded bg-gray-50 ">
-
 				<div>
 					<h1 className="text-xl font-semibold ">
 						AGOI: <span className="text-teal-700">CReate Update Delete</span>
@@ -70,11 +69,9 @@ const App = () => {
 				</div>
 			</div>
 			<div className="p-6 my-5 rounded bg-gray-50">
-			<BlogTable />
-					
+				<BlogTable />
 			</div>
 		</div>
-
 	);
 };
 
