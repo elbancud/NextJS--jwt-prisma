@@ -59,10 +59,10 @@ for (let i = 0; i < 5; i++) {
 	data.push({
 		key: i,
 		index: i,
-		title: `Fake title ${i}`,
-		description: `Fake description ${i}`,
-		date_created: `Fake date created ${i}`,
-		date_updated: `Fake date updated ${i}`,
+		title: `Dummy title ${i}`,
+		description: `Dummy description ${i}`,
+		date_created: `Dummy date created ${i}`,
+		date_updated: `Dummy date updated ${i}`,
 	});
 }
 
