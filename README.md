@@ -23,3 +23,13 @@ AUTH
 [x] - Eslint
 [ ] - Prisma
 ```
+
+## Prisma config
+
+```
+to iniitalize primsa client
+> npx prisma init
+
+to migrate db & schema
+> npx prisma db push
+```
