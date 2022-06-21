@@ -15,13 +15,14 @@ STYLING
 [x] - Admin Dashboard - ANTDesign
 
 BACKEND
-[ ] - api integration
+[x] - api integration
+
 AUTH
 [ ] - JWT
 [x] - Axios
 [ ] - Cross ENV
 [x] - Eslint
-[ ] - Prisma
+[x] - Prisma
 ```
 
 ## Prisma config
@@ -32,4 +33,15 @@ to iniitalize primsa client
 
 to migrate db & schema
 > npx prisma db push
+```
+
+## Bells & Whistles
+
+```
+- mysql | Linux
+    - use mysql_upgrade
+    > sudo /opt/lampp/bin/mysql_upgrade
+    - .env
+        - make sure to start DATABASE_URL with "mysql://"
+        - make sure same port
 ```
