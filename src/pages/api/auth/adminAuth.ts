@@ -30,7 +30,7 @@ export default async function adminAuth(
 			const { id } = user;
 			const authenticatedUser = user ? user : { id, username };
 			const accessToken = getAccessToken(authenticatedUser);
-			response.status(200).send(accessToken);
+			response.status(200).send({ accessToken: accessToken });
 		}
 	} catch (error) {
 		response.json({ error });

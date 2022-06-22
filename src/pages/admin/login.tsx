@@ -1,17 +1,22 @@
 import { Button, Checkbox, Form, Input } from "antd";
 import "antd/dist/antd.css";
 import axiosClient from "../../lib/axios";
-
+import { useRouter } from "next/router";
+import { useState } from "react";
 interface IValues {
 	username: string;
 	password: string;
 }
-function login() {
+function Login() {
+	const [response, setResponse] = useState("");
+	const router = useRouter();
 	const onFinish = (values: IValues) => {
 		axiosClient
 			.post("/auth/adminAuth", values)
 			.then((response) => {
-				console.log(response);
+				if (response.data.accessToken) {
+					router.push("/admin/adminDashboard");
+				}
 			})
 			.catch((error) => {
 				console.error(error);
@@ -26,7 +31,7 @@ function login() {
 		<div className="min-h-full p-5 flex items-center justify-center h-screen">
 			<div className="w-full max-w-md">
 				<div className="text-center">
-					<h1 className="font-bold text-lg">Login, erp.</h1>
+					<h1 className="font-bold text-lg">Login, ;V.</h1>
 				</div>
 				<Form
 					name="basic"
@@ -82,4 +87,4 @@ function login() {
 	);
 }
 
-export default login;
+export default Login;
