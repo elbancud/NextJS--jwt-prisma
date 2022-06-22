@@ -1,14 +1,26 @@
 import { Button, Checkbox, Form, Input } from "antd";
 import "antd/dist/antd.css";
+import axiosClient from "../../lib/axios";
 
+interface IValues {
+	username: string;
+	password: string;
+}
 function login() {
-	// const onFinish = (values) => {
-	// 	console.log("Success:", values);
-	// };
+	const onFinish = (values: IValues) => {
+		axiosClient
+			.post("/api/auth/adminAuth")
+			.then((response) => {
+				console.log(response);
+			})
+			.catch((error) => {
+				console.error(error);
+			});
+	};
 
-	// const onFinishFailed = (errorInfo) => {
-	// 	console.log("Failed:", errorInfo);
-	// };
+	const onFinishFailed = (errorInfo) => {
+		console.log("Failed:", errorInfo);
+	};
 
 	return (
 		<div className="min-h-full p-5 flex items-center justify-center h-screen">

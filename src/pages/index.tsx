@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 import { useRouter } from "next/router";
-import { useAppDispatch, useAppSelector } from "../lib/custom-hooks";
+import { useAppDispatch, useAppSelector } from "../lib/";
 import { incremented, amountAdded } from "../lib/features/counter-slice";
 import Link from "next/link";
 import paths from "../lib/paths";
