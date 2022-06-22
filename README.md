@@ -22,7 +22,7 @@ BACKEND
 [x] - api integration
 
 AUTH
-[ ] - JWT
+[x] - JWT
 [x] - Axios
 [x] - Eslint
 [x] - Prisma
