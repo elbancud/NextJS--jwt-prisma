@@ -9,7 +9,7 @@ interface IValues {
 function login() {
 	const onFinish = (values: IValues) => {
 		axiosClient
-			.post("/api/auth/adminAuth")
+			.post("/auth/adminAuth", values)
 			.then((response) => {
 				console.log(response);
 			})
@@ -18,7 +18,7 @@ function login() {
 			});
 	};
 
-	const onFinishFailed = (errorInfo) => {
+	const onFinishFailed = (errorInfo: string) => {
 		console.log("Failed:", errorInfo);
 	};
 

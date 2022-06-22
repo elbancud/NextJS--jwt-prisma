@@ -10,7 +10,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Blog {
+model blog {
   id Int @id @default(autoincrement())
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
@@ -18,7 +18,7 @@ model Blog {
   content String @db.Text
 }
 
-model Admin_accounts {
+model admin_accounts {
   id String @id @db.VarChar(250)
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt

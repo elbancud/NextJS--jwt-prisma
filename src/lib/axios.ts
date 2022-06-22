@@ -5,6 +5,6 @@ const axiosClient = axios.create({
 	withCredentials: true,
 });
 
-axiosClient.interceptors.request.use((config) => {});
-axiosClient.interceptors.response.use(() => {});
+// axiosClient.interceptors.request.use((config) => {});
+// axiosClient.interceptors.response.use(() => {});
 export default axiosClient;
