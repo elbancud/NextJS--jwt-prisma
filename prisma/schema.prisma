@@ -11,7 +11,7 @@ datasource db {
 }
 
 model blog {
-  id            Int         @id @default(autoincrement())
+  id            Int         @id @default(autoincrement()) @unique
   created_at    DateTime    @default(now())
   updated_at    DateTime    @updatedAt
   title         String      @db.VarChar(255)
@@ -19,10 +19,10 @@ model blog {
 }
 
 model admin_accounts {
-  id            String      @id @db.VarChar(250)
+  id            String      @id @db.VarChar(250) @unique
   created_at    DateTime    @default(now())
   updated_at    DateTime    @updatedAt
-  username      String      @db.VarChar(50)
+  username      String      @db.VarChar(50) @unique
   password      String      @db.VarChar(50)
 }
 
