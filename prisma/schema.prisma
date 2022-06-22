@@ -9,6 +9,7 @@ datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
 }
+
 model Blog {
   id Int @id @default(autoincrement())
   created_at DateTime @default(now())
@@ -16,6 +17,7 @@ model Blog {
   title String @db.VarChar(255)
   content String @db.Text
 }
+
 model Admin_accounts {
   id Int @id @default(autoincrement())
   created_at DateTime @default(now())
@@ -23,6 +25,7 @@ model Admin_accounts {
   username String @db.VarChar(50)
   password String @db.VarChar(50)
 }
+
 enum Role {
   ADMIN
 }
