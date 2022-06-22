@@ -1,6 +1,10 @@
 ## About the Project
 
-A blogging website built from the ground up. This will be a starting point for implementing fullstack tech using the said technologies below. or wtvr
+Nothing special here. Prisma implementation and a boilderplate (somehow). : V
+
+## Tags
+
+- JWT - Prisma - Axios - ANTDesign - Typescript - Redux - Next JS
 
 ## Technology integrated
 
@@ -20,19 +24,24 @@ BACKEND
 AUTH
 [ ] - JWT
 [x] - Axios
-[ ] - Cross ENV
 [x] - Eslint
 [x] - Prisma
+[x] - uuidv4
 ```
 
 ## Prisma config
 
 ```
-to iniitalize primsa client
+to iniitalize prisma client
 > npx prisma init
 
 to migrate db & schema
 > npx prisma db push
+> npx prisma migrate -dev
+
+to generate prisma client with import and instantiation
+> npx prisma generate
+
 ```
 
 ## Bells & Whistles
@@ -44,4 +53,9 @@ to migrate db & schema
     - .env
         - make sure to start DATABASE_URL with "mysql://"
         - make sure same port
+
+- Error | Field does not exist on enclosing type
+    >>> Fix
+        - restart the server
+        - regenerate & remigrate schema
 ```
