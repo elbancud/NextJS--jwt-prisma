@@ -22,12 +22,15 @@ const validateMessages = {
 	},
 };
 /* eslint-enable no-template-curly-in-string */
-
+interface TValues {
+	title: string;
+	content: string;
+}
 const App = () => {
-	const onFinish = async (values) => {
+	const onFinish = async (values: TValues) => {
 		// console.log(values);
-		await axiosClient
-			.post("/api/auth/adminAuth", values)
+		axiosClient
+			.post("/queries/createBlog", values)
 			.then((result) => {
 				console.log(result);
 			})
@@ -63,8 +66,8 @@ const App = () => {
 						</Form.Item>
 						<Form.Item
 							className="font-bold"
-							name={["description"]}
-							label="Description"
+							name={["content"]}
+							label="content"
 							rules={formRule}
 						>
 							<Input.TextArea />
