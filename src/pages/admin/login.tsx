@@ -8,7 +8,7 @@ interface IValues {
 	password: string;
 }
 function Login() {
-	const [response, setResponse] = useState("");
+	const [response, setResponse] = useState<String>("");
 	const router = useRouter();
 	const onFinish = (values: IValues) => {
 		axiosClient

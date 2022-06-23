@@ -1,22 +1,26 @@
+import { PrismaClient } from "@prisma/client";
 import { Table } from "antd";
 import type { ColumnsType } from "antd/lib/table";
-import React from "react";
+import { GetServerSideProps } from "next";
+import { AppProps } from "next/app";
+import React, { useEffect, useState } from "react";
+import axiosClient from "../../../../lib/axios";
 
 interface DataType {
 	key: React.Key;
 	index: number;
 	title: string;
-	description: string;
+	content: string;
 	date_created: string;
 	date_updated: string;
 }
 
 const columns: ColumnsType<DataType> = [
 	{
-		title: "Index",
+		title: "id",
 		width: 50,
-		dataIndex: "index",
-		key: "index",
+		dataIndex: "id",
+		key: "id",
 		fixed: "left",
 	},
 	{
@@ -27,21 +31,21 @@ const columns: ColumnsType<DataType> = [
 		fixed: "left",
 	},
 	{
-		title: "Description",
-		dataIndex: "description",
-		key: "description",
+		title: "Content",
+		dataIndex: "content",
+		key: "content",
 		width: 150,
 	},
 	{
 		title: "Date Created",
-		dataIndex: "date_created",
-		key: "date_created",
+		dataIndex: "created_at",
+		key: "created_at",
 		width: 80,
 	},
 	{
 		title: "Date Updated",
-		dataIndex: "date_updated",
-		key: "date_updated",
+		dataIndex: "updated_at",
+		key: "updated_at",
 		width: 80,
 	},
 	{
@@ -53,21 +57,45 @@ const columns: ColumnsType<DataType> = [
 	},
 ];
 
-const data: DataType[] = [];
+// for (let i = 0; i <= 10; i++) {
+// 	data.push({
+// 		key: i,
+// 		index: i,
+// 		title: "title",
+// 		content: "content",
+// 		date_created: "new Date()",
+// 		date_updated: "new Date()",
+// 	});
+// }
+export default function BlogTable() {
+	// const data: DataType[] = [];
+	const [blogs, setBlogs] = useState([{}]);
+	useEffect(() => {
+		axiosClient
+			.get("/queries/blogs")
+			.then((response) => {
+				let blogsArray = [];
 
-for (let i = 0; i < 5; i++) {
-	data.push({
-		key: i,
-		index: i,
-		title: `Dummy title ${i}`,
-		description: `Dummy description ${i}`,
-		date_created: `Dummy date created ${i}`,
-		date_updated: `Dummy date updated ${i}`,
-	});
+				for (let i = 0; i <= response.data.length; i++) {
+					if (typeof response.data[i] === "object") {
+						blogsArray.push({ key: response.data[i].id, ...response.data[i] });
+					}
+				}
+				setBlogs(blogsArray);
+			})
+			.catch((error) => {
+				console.log(error);
+			});
+		console.log(blogs);
+		// console.log(data);
+	}, []);
+	return (
+		<div>
+			<Table
+				columns={columns}
+				dataSource={blogs}
+				scroll={{ x: 1500, y: 300 }}
+			/>
+		</div>
+	);
 }
-
-const BlogTable: React.FC = () => (
-	<Table columns={columns} dataSource={data} scroll={{ x: 1500, y: 300 }} />
-);
-
-export default BlogTable;
