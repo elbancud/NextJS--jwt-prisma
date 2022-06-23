@@ -11,10 +11,10 @@ datasource db {
 }
 
 model blog {
-  id            String      @id @db.VarChar(250)@unique
+  id            String      @id @db.VarChar(250) @unique
   created_at    DateTime    @default(now())
   updated_at    DateTime    @updatedAt
-  title         String      @db.VarChar(255)
+  title         String      @db.VarChar(255) @unique
   content       String      @db.Text
 }
 

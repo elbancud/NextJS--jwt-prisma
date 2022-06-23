@@ -10,14 +10,16 @@ export default async function createBlog(
 		const prisma = new PrismaClient();
 		const { title, content } = request.body;
 		const id = uuidv4();
-		const saveBlog = await prisma.blog.create({
+		const Blog = await prisma.blog.create({
 			data: {
 				id,
 				created_at: new Date(),
 				updated_at: new Date(),
+				title,
+				content,
 			},
 		});
-		response.status(200).send(saveBlog);
+		response.status(200).send(Blog);
 	} catch (e) {
 		response.send(e);
 	}
