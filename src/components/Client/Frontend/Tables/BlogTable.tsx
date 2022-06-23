@@ -8,11 +8,11 @@ import axiosClient from "../../../../lib/axios";
 
 interface DataType {
 	key: React.Key;
-	index: number;
+	id: number;
 	title: string;
 	content: string;
-	date_created: string;
-	date_updated: string;
+	created_at: Date;
+	updated_at: Date;
 }
 
 const columns: ColumnsType<DataType> = [
@@ -78,23 +78,30 @@ export default function BlogTable() {
 
 				for (let i = 0; i <= response.data.length; i++) {
 					if (typeof response.data[i] === "object") {
-						blogsArray.push({ key: response.data[i].id, ...response.data[i] });
+						blogsArray.push({
+							key: response.data[i].title,
+							...response.data[i],
+						});
 					}
+					console.log(blogsArray);
 				}
 				setBlogs(blogsArray);
 			})
 			.catch((error) => {
 				console.log(error);
 			});
-		console.log(blogs);
-		// console.log(data);
 	}, []);
 	return (
 		<div>
 			<Table
 				columns={columns}
+				expandable={{
+					expandedRowRender: (record) => (
+						<p style={{ margin: 0 }}>{record?.content}</p>
+					),
+					rowExpandable: (record) => record.title !== "Not Expandable",
+				}}
 				dataSource={blogs}
-				scroll={{ x: 1500, y: 300 }}
 			/>
 		</div>
 	);
