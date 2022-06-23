@@ -59,7 +59,6 @@ const columns: ColumnsType<TableDataType> = [
 ];
 
 export default function BlogTable() {
-	// const data: DataType[] = [];
 	const [blogs, setBlogs] = useState([{}]);
 	useEffect(() => {
 		axiosClient
@@ -72,7 +71,7 @@ export default function BlogTable() {
 				);
 			})
 			.catch((error) => {
-				console.log(error);
+				console.error(error);
 			});
 	}, []);
 	return (

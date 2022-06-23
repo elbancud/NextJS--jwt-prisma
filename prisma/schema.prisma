@@ -11,7 +11,7 @@ datasource db {
 }
 
 model blog {
-  id            Int         @id @default(autoincrement()) @unique
+  id            String      @id @db.VarChar(250)@unique
   created_at    DateTime    @default(now())
   updated_at    DateTime    @updatedAt
   title         String      @db.VarChar(255)
