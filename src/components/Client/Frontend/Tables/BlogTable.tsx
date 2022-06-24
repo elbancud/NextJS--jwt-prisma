@@ -8,7 +8,7 @@ import React, { useEffect, useState } from "react";
 import axiosClient from "../../../../lib/axios";
 
 interface TableDataType {
-	key: React.Key;
+	key: string;
 	id: number;
 	title: string;
 	content: string;
@@ -59,14 +59,14 @@ const columns: ColumnsType<TableDataType> = [
 ];
 
 export default function BlogTable() {
-	const [blogs, setBlogs] = useState([{}]);
+	const [blogs, setBlogs] = useState([]);
 	useEffect(() => {
 		axiosClient
 			.get("/queries/blogs")
 			.then((response) => {
 				setBlogs(
 					response.data.map((blog: TableDataType) => {
-						return { ...blog, key: blog.title };
+						return { ...blog, key: blog.id };
 					})
 				);
 			})
