@@ -60,6 +60,9 @@ to generate prisma client with import and instantiation
         - regenerate & remigrate schema
 - Performance
     - Memoization
-        - In the admin authentication, memoization basically means to store the last input and from there make a validation then perform a certain function. In this way, there would be a performance optimization since we are returning last output rather than re performing the function.
-        - href: https://whatthefuck.is/memoization
+        - Basically means to store the last input and from there make
+        a validation then perform a certain function. In this way, there
+        would be a performance optimization since we are returning last output
+         rather than re performing the function.
+        - Reference: https://whatthefuck.is/memoization
 ```
