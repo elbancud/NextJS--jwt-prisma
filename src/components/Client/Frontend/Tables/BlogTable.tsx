@@ -1,6 +1,7 @@
 import { Table } from "antd";
 import type { ColumnsType } from "antd/lib/table";
 import ColumnGroup from "antd/lib/table/ColumnGroup";
+import { AxiosRequestConfig } from "axios";
 import { GetServerSideProps } from "next";
 import { AppProps } from "next/app";
 import React, { useEffect, useState } from "react";
@@ -77,13 +78,41 @@ export default function BlogTable() {
 				console.error(error);
 			});
 	}, []);
+	function deleteBlog(id: AxiosRequestConfig<any>, model: string) {
+		const payload = {
+			id,
+			model,
+		};
+		axiosClient
+			.delete("/queries/delete", payload)
+			.then((response) => {
+				console.log(response);
+			})
+			.catch((error) => console.log(error));
+	}
 	return (
 		<div>
 			<Table
 				columns={columns}
 				expandable={{
 					expandedRowRender: (record: any) => (
-						<p style={{ margin: 0 }}>{record?.content}</p>
+						<div className="flex justify-between">
+							<div className="flex">
+								<p className="mx-3">{record?.title}</p>
+								<p className="mx-3">{record?.content}</p>
+							</div>
+							<div>
+								<button className="mx-3">edit</button>
+								<button
+									onClick={() => {
+										deleteBlog(record.id, "blog");
+									}}
+									className="mx-3"
+								>
+									remove
+								</button>
+							</div>
+						</div>
 					),
 					rowExpandable: (record: any) => record?.title !== "Not Expandable",
 				}}
