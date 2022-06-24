@@ -10,29 +10,49 @@ interface IAdminAuth {
  * .. if the admin account is registered then send designated response in the frontend.
  *
  */
+interface ILastAuth {
+	accessToken: string;
+}
+let lastUsername: string;
+let lastPassword: string;
+let lastAuthenticate: ILastAuth = {
+	accessToken: "",
+};
 
-export default async function adminAuth(
-	request: NextApiRequest,
-	response: NextApiResponse
-): Promise<void> {
+function memoizedUserAuth(username: string, password: string) {
 	const prisma = new PrismaClient();
 	try {
-		const { username, password }: IAdminAuth = request.body;
-
-		const user = await prisma.admin_accounts.findFirst({
+		if (username === lastUsername && password === lastPassword) {
+			return lastAuthenticate.accessToken;
+		}
+		const user = prisma.admin_accounts.findFirst({
 			where: {
 				username,
 				password,
 			},
 		});
-
-		if ((username === username && password === password) || user) {
+		//(username === username && password === password) ||
+		if (user) {
 			const { id } = user;
-			const authenticatedUser = user ? user : { id, username };
+			const authenticatedUser = { id, username };
 			const accessToken = getAccessToken(authenticatedUser);
-			response.status(200).send({ accessToken: accessToken });
+			lastAuthenticate.accessToken = accessToken;
+			return { accessToken: lastAuthenticate.accessToken };
 		}
+		lastUsername = username;
+		lastPassword = password;
+
+		return lastAuthenticate.accessToken;
 	} catch (error) {
-		response.json({ error });
+		return error;
 	}
+}
+
+export default async function adminAuth(
+	request: NextApiRequest,
+	response: NextApiResponse
+) {
+	const { username, password }: IAdminAuth = request.body;
+	const authResponse = await memoizedUserAuth(username, password);
+	response.send(authResponse);
 }

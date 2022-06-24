@@ -1,4 +1,3 @@
-import { PrismaClient } from "@prisma/client";
 import { Table } from "antd";
 import type { ColumnsType } from "antd/lib/table";
 import ColumnGroup from "antd/lib/table/ColumnGroup";
@@ -36,24 +35,28 @@ const columns: ColumnsType<TableDataType> = [
 		dataIndex: "content",
 		key: "content",
 		width: 150,
+		responsive: ["md"],
 	},
 	{
 		title: "Date Created",
 		dataIndex: "created_at",
 		key: "created_at",
 		width: 80,
+		responsive: ["md"],
 	},
 	{
 		title: "Date Updated",
 		dataIndex: "updated_at",
 		key: "updated_at",
 		width: 80,
+		responsive: ["md"],
 	},
 	{
 		title: "Action",
 		key: "operation",
 		fixed: "right",
 		width: 100,
+		responsive: ["md"],
 		render: () => <a>action</a>,
 	},
 ];
