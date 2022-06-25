@@ -3,7 +3,7 @@ import "antd/dist/antd.css";
 
 import BlogResource from "../components/Client/Frontend/Dashboard/BlogsResource";
 import AccountsResources from "../components/Client/Frontend/Dashboard/AccountsResource";
-import { NextComponentType, NextPageContext } from "next";
+import { NextComponentType } from "next";
 
 import { UserOutlined, DatabaseOutlined } from "@ant-design/icons";
 import { Layout, Menu, Breadcrumb } from "antd";

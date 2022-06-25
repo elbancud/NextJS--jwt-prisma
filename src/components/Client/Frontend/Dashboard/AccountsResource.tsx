@@ -1,4 +1,3 @@
-import { NextComponentType } from "next";
 
 // TODO: Input forms
 // TODO: CRUD operations

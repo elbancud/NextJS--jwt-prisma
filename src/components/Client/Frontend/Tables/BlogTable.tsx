@@ -1,9 +1,6 @@
 import { Table } from "antd";
 import type { ColumnsType } from "antd/lib/table";
-import ColumnGroup from "antd/lib/table/ColumnGroup";
 import { AxiosRequestConfig } from "axios";
-import { GetServerSideProps } from "next";
-import { AppProps } from "next/app";
 import React, { useEffect, useState } from "react";
 import axiosClient from "../../../../lib/axios";
 
